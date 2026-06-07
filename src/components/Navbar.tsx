@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, Phone, Bug } from 'lucide-react'
+import { Menu, X, Phone } from 'lucide-react'
 import { CONTACT } from '../data/content'
 
 const NAV_LINKS = [
@@ -22,9 +22,11 @@ export default function Navbar() {
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2">
-          <div className="flex h-9 w-9 items-center justify-center rounded-md bg-wasp-yellow">
-            <Bug className="h-5 w-5 text-wasp-black" />
-          </div>
+          <img
+            src="/images/destruction-guepes-frelons-drome.jpg"
+            alt="Val Drôme Guêpes Frelons"
+            className="h-10 w-10 rounded-md object-cover"
+          />
           <div>
             <p className="font-rajdhani text-sm font-bold leading-none text-wasp-yellow">
               VAL DRÔME
