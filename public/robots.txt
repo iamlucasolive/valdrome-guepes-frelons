@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://frelons-guepes-destruction.fr/sitemap.xml
