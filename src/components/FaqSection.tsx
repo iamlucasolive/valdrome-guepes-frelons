@@ -43,7 +43,12 @@ export default function FaqSection({ items, jsonLdId = 'faq' }: FaqSectionProps)
         </motion.h2>
         <div className="space-y-2">
           {items.map(({ question, answer }, i) => (
-            <div key={i} className="overflow-hidden rounded-xl bg-white shadow-sm">
+            <div
+              key={i}
+              className={`overflow-hidden rounded-xl bg-white shadow-sm transition-all duration-200 ${
+                openIndex === i ? 'border-l-4 border-wasp-yellow' : 'border-l-4 border-transparent'
+              }`}
+            >
               <button
                 onClick={() => setOpenIndex(openIndex === i ? null : i)}
                 className="flex w-full items-center justify-between px-5 py-4 text-left"
