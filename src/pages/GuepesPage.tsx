@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { AlertTriangle, Eye, Phone as PhoneIcon } from 'lucide-react'
 import HeroSection from '../components/HeroSection'
 import WaspStripeDivider from '../components/WaspStripeDivider'
+import FaqSection, { FaqItem } from '../components/FaqSection'
 import { CONTACT } from '../data/content'
 
 interface InfoCardProps { icon: React.ReactNode; title: string; text: string; delay: number }
@@ -24,6 +25,29 @@ function InfoCard({ icon, title, text, delay }: InfoCardProps) {
     </motion.div>
   )
 }
+
+const FAQ_GUEPES: FaqItem[] = [
+  {
+    question: "Quel est le prix d'une destruction de nid de guêpes ?",
+    answer: "Le tarif dépend de l'accessibilité et de la taille du nid. Contactez-nous pour un devis gratuit par téléphone.",
+  },
+  {
+    question: "Faut-il détruire le nid ou seulement traiter les guêpes ?",
+    answer: "L'idéal est de détruire le nid après traitement pour éviter toute réinfestation. Le professionnel évalue la situation sur place.",
+  },
+  {
+    question: "Est-ce dangereux d'intervenir soi-même sur un nid de guêpes ?",
+    answer: "Oui. Les guêpes deviennent très agressives lorsqu'elles se sentent menacées. Une attaque en masse peut être grave, voire mortelle pour les personnes allergiques.",
+  },
+  {
+    question: "Combien de temps dure une intervention ?",
+    answer: "Une intervention standard dure entre 20 et 45 minutes selon la localisation du nid et son accessibilité.",
+  },
+  {
+    question: "Le traitement est-il sans danger pour mes enfants et animaux ?",
+    answer: "Les biocides utilisés sont homologués et appliqués de manière raisonnée. Il est conseillé de laisser la zone ventilée quelques heures après l'intervention.",
+  },
+]
 
 export default function GuepesPage() {
   return (
@@ -96,6 +120,9 @@ export default function GuepesPage() {
           </a>
         </div>
       </section>
+
+      <WaspStripeDivider />
+      <FaqSection items={FAQ_GUEPES} jsonLdId="faq-guepes" />
     </>
   )
 }
