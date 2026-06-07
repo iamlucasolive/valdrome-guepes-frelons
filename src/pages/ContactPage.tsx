@@ -1,25 +1,11 @@
 import { Helmet } from 'react-helmet-async'
-import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Phone as PhoneIcon, Mail, MapPin } from 'lucide-react'
 import HeroSection from '../components/HeroSection'
 import WaspStripeDivider from '../components/WaspStripeDivider'
 import { CONTACT } from '../data/content'
 
-interface FormState { nom: string; email: string; message: string }
-
 export default function ContactPage() {
-  const [form, setForm] = useState<FormState>({ nom: '', email: '', message: '' })
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => {
-    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }))
-  }
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-  }
 
   return (
     <>
@@ -46,61 +32,32 @@ export default function ContactPage() {
             viewport={{ once: true }}
           >
             <h2 className="mb-6 font-rajdhani text-3xl font-black text-wasp-black">
-              Envoyer un message
+              Nous contacter
             </h2>
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div>
-                <label className="mb-1 block font-poppins text-sm font-semibold text-wasp-black">
-                  Nom
-                </label>
-                <input
-                  type="text"
-                  name="nom"
-                  value={form.nom}
-                  onChange={handleChange}
-                  required
-                  className="w-full rounded-lg border border-gray-200 px-4 py-3 font-poppins text-sm outline-none transition focus:border-wasp-yellow focus:ring-2 focus:ring-wasp-yellow/20"
-                  placeholder="Votre nom"
-                />
-              </div>
-              <div>
-                <label className="mb-1 block font-poppins text-sm font-semibold text-wasp-black">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  value={form.email}
-                  onChange={handleChange}
-                  required
-                  className="w-full rounded-lg border border-gray-200 px-4 py-3 font-poppins text-sm outline-none transition focus:border-wasp-yellow focus:ring-2 focus:ring-wasp-yellow/20"
-                  placeholder="votre@email.fr"
-                />
-              </div>
-              <div>
-                <label className="mb-1 block font-poppins text-sm font-semibold text-wasp-black">
-                  Message
-                </label>
-                <textarea
-                  name="message"
-                  value={form.message}
-                  onChange={handleChange}
-                  required
-                  rows={5}
-                  className="w-full rounded-lg border border-gray-200 px-4 py-3 font-poppins text-sm outline-none transition focus:border-wasp-yellow focus:ring-2 focus:ring-wasp-yellow/20"
-                  placeholder="Décrivez votre situation..."
-                />
-              </div>
-              <button
-                type="submit"
-                className="w-full rounded-lg bg-wasp-yellow py-3 font-rajdhani text-base font-bold text-wasp-black transition-opacity hover:opacity-90"
+            <p className="mb-8 font-poppins text-sm leading-relaxed text-wasp-gray">
+              Pour une intervention rapide, appelez directement — c&apos;est le moyen le plus sûr
+              d&apos;obtenir une réponse immédiate. Pour une demande non urgente, envoyez-nous
+              un email et nous vous répondrons sous 24h.
+            </p>
+            <div className="space-y-4">
+              <a
+                href={CONTACT.telephoneHref}
+                className="flex w-full items-center justify-center gap-3 rounded-xl bg-wasp-yellow py-4 font-rajdhani text-xl font-bold text-wasp-black transition-opacity hover:opacity-90"
               >
-                Envoyer le message
-              </button>
-              <p className="font-poppins text-xs text-wasp-gray">
-                * Formulaire à brancher — pour une réponse immédiate, appelez directement.
-              </p>
-            </form>
+                <PhoneIcon className="h-6 w-6" />
+                Appeler maintenant — {CONTACT.telephone}
+              </a>
+              <a
+                href={`mailto:${CONTACT.email}`}
+                className="flex w-full items-center justify-center gap-3 rounded-xl border-2 border-wasp-black py-4 font-rajdhani text-lg font-bold text-wasp-black transition-colors hover:bg-wasp-black hover:text-wasp-yellow"
+              >
+                <Mail className="h-5 w-5" />
+                Envoyer un email
+              </a>
+            </div>
+            <p className="mt-4 font-poppins text-xs text-wasp-gray">
+              Disponible en saison (avril–novembre), du lundi au samedi, 8h–19h.
+            </p>
           </motion.div>
 
           <motion.div
