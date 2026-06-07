@@ -1,20 +1,43 @@
 import { Helmet } from 'react-helmet-async'
 import { Link } from 'react-router-dom'
 import { motion, useInView } from 'framer-motion'
-import { useRef } from 'react'
+import { useRef, useEffect, useState } from 'react'
 import { Bug, Zap, Shield, ChevronRight, Award, Clock, ThumbsUp } from 'lucide-react'
 import HeroSection from '../components/HeroSection'
 import WaspStripeDivider from '../components/WaspStripeDivider'
 import { STATS, CONTACT, COMMUNES_PRINCIPALES } from '../data/content'
 import { COMMUNES } from '../data/communes'
 
-interface StatItemProps { valeur: string; label: string }
+function useCountUp(target: number, duration: number, start: boolean) {
+  const [count, setCount] = useState(0)
+  useEffect(() => {
+    if (!start) return
+    let startTime: number | null = null
+    const step = (timestamp: number) => {
+      if (!startTime) startTime = timestamp
+      const progress = Math.min((timestamp - startTime) / duration, 1)
+      setCount(Math.floor(progress * target))
+      if (progress < 1) requestAnimationFrame(step)
+    }
+    requestAnimationFrame(step)
+  }, [start, target, duration])
+  return count
+}
 
-function StatItem({ valeur, label }: StatItemProps) {
+interface StatItemProps { valeur: string; label: string; inView: boolean }
+
+function StatItem({ valeur, label, inView }: StatItemProps) {
+  // Extraire la partie numérique et le suffixe ("+", "h", "+")
+  const match = valeur.match(/^([+]?)(\d+)(.*)$/)
+  const prefix = match?.[1] ?? ''
+  const numeric = match ? parseInt(match[2], 10) : 0
+  const suffix = match?.[3] ?? ''
+  const count = useCountUp(numeric, 1200, inView)
+
   return (
     <div className="text-center">
       <p className="font-rajdhani text-3xl font-black text-wasp-black md:text-4xl">
-        {valeur}
+        {prefix}{inView ? count : 0}{suffix}
       </p>
       <p className="font-poppins text-sm font-medium text-wasp-black/70">{label}</p>
     </div>
@@ -100,7 +123,7 @@ const GARANTIES = [
 
 export default function HomePage() {
   const statsRef = useRef<HTMLDivElement>(null)
-  useInView(statsRef, { once: true })
+  const statsInView = useInView(statsRef, { once: true })
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -141,7 +164,7 @@ export default function HomePage() {
       <div ref={statsRef} className="bg-wasp-yellow py-8">
         <div className="mx-auto grid max-w-7xl grid-cols-3 divide-x divide-wasp-black/20 px-4">
           {STATS.map(({ valeur, label }) => (
-            <StatItem key={label} valeur={valeur} label={label} />
+            <StatItem key={label} valeur={valeur} label={label} inView={statsInView} />
           ))}
         </div>
       </div>
