@@ -28,78 +28,90 @@ export default function HeroSection({
 }: HeroSectionProps) {
   return (
     <section className="relative overflow-hidden bg-wasp-black py-20 md:py-28">
-      {/* Motif guêpe décoratif */}
-      <div className="pointer-events-none absolute right-8 top-1/2 -translate-y-1/2 text-[8rem] opacity-5 select-none">
-        🐝
-      </div>
+      <div className="relative mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 px-4 md:grid-cols-2">
+        {/* Contenu textuel */}
+        <div>
+          {/* Bande décorative */}
+          <div className="mb-6 flex h-2 w-32 overflow-hidden rounded-full">
+            {[...Array(8)].map((_, i) => (
+              <div
+                key={i}
+                className={`flex-1 ${i % 2 === 0 ? 'bg-wasp-yellow' : 'bg-wasp-dark'}`}
+              />
+            ))}
+          </div>
 
-      <div className="relative mx-auto max-w-7xl px-4">
-        {/* Bande décorative */}
-        <div className="mb-6 flex h-1.5 w-24 overflow-hidden rounded-full">
-          {[...Array(6)].map((_, i) => (
-            <div
-              key={i}
-              className={`flex-1 ${i % 2 === 0 ? 'bg-wasp-yellow' : 'bg-wasp-dark'}`}
-            />
-          ))}
-        </div>
-
-        <motion.p
-          custom={0}
-          variants={fadeUp}
-          initial="hidden"
-          animate="visible"
-          className="mb-3 font-poppins text-xs font-bold uppercase tracking-[3px] text-wasp-yellow"
-        >
-          Intervention rapide · Drôme
-        </motion.p>
-
-        <motion.h1
-          custom={1}
-          variants={fadeUp}
-          initial="hidden"
-          animate="visible"
-          className="mb-4 font-rajdhani text-4xl font-black leading-tight text-white md:text-5xl lg:text-6xl"
-        >
-          {title}{' '}
-          {titleHighlight && (
-            <span className="text-wasp-yellow">{titleHighlight}</span>
-          )}
-        </motion.h1>
-
-        <motion.p
-          custom={2}
-          variants={fadeUp}
-          initial="hidden"
-          animate="visible"
-          className="mb-8 max-w-xl font-poppins text-base text-white/60"
-        >
-          {subtitle}
-        </motion.p>
-
-        {showCta && (
-          <motion.div
-            custom={3}
+          <motion.p
+            custom={0}
             variants={fadeUp}
             initial="hidden"
             animate="visible"
-            className="flex flex-wrap gap-3"
+            className="mb-3 font-poppins text-xs font-bold uppercase tracking-[3px] text-wasp-yellow"
           >
-            <a
-              href={CONTACT.telephoneHref}
-              className="flex items-center gap-2 rounded-md bg-wasp-yellow px-6 py-3 font-rajdhani text-base font-bold text-wasp-black transition-opacity hover:opacity-90"
+            Intervention rapide · Drôme
+          </motion.p>
+
+          <motion.h1
+            custom={1}
+            variants={fadeUp}
+            initial="hidden"
+            animate="visible"
+            className="mb-4 font-rajdhani text-4xl font-black leading-tight text-white md:text-5xl lg:text-6xl"
+          >
+            {title}{' '}
+            {titleHighlight && (
+              <span className="text-wasp-yellow">{titleHighlight}</span>
+            )}
+          </motion.h1>
+
+          <motion.p
+            custom={2}
+            variants={fadeUp}
+            initial="hidden"
+            animate="visible"
+            className="mb-8 max-w-xl font-poppins text-base text-white/80"
+          >
+            {subtitle}
+          </motion.p>
+
+          {showCta && (
+            <motion.div
+              custom={3}
+              variants={fadeUp}
+              initial="hidden"
+              animate="visible"
+              className="flex flex-wrap gap-3"
             >
-              <Phone className="h-4 w-4" />
-              Appeler maintenant
-            </a>
-            <Link
-              to="/contact"
-              className="flex items-center gap-2 rounded-md border border-wasp-yellow px-6 py-3 font-rajdhani text-base font-bold text-wasp-yellow transition-colors hover:bg-wasp-yellow hover:text-wasp-black"
-            >
-              Devis gratuit →
-            </Link>
-          </motion.div>
-        )}
+              <a
+                href={CONTACT.telephoneHref}
+                className="flex items-center gap-2 rounded-md bg-wasp-yellow px-6 py-3 font-rajdhani text-base font-bold text-wasp-black transition-opacity hover:opacity-90"
+              >
+                <Phone className="h-4 w-4" />
+                Appeler maintenant
+              </a>
+              <Link
+                to="/contact"
+                className="flex items-center gap-2 rounded-md border border-wasp-yellow px-6 py-3 font-rajdhani text-base font-bold text-wasp-yellow transition-colors hover:bg-wasp-yellow hover:text-wasp-black"
+              >
+                Devis gratuit →
+              </Link>
+            </motion.div>
+          )}
+        </div>
+
+        {/* Image terrain desktop */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.3, duration: 0.6 }}
+          className="hidden overflow-hidden rounded-2xl md:block"
+        >
+          <img
+            src="/images/destruction-guepes-frelons-drome.jpg"
+            alt="Professionnel certifié pour la destruction de nids de guêpes et frelons dans la Drôme"
+            className="h-80 w-full object-cover lg:h-96"
+          />
+        </motion.div>
       </div>
 
       <div className="mt-12">
