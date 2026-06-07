@@ -2,7 +2,7 @@ import { Helmet } from 'react-helmet-async'
 import { Link } from 'react-router-dom'
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { Bug, Zap, Shield, ChevronRight } from 'lucide-react'
+import { Bug, Zap, Shield, ChevronRight, Award, Clock, ThumbsUp } from 'lucide-react'
 import HeroSection from '../components/HeroSection'
 import WaspStripeDivider from '../components/WaspStripeDivider'
 import { STATS, CONTACT, COMMUNES_PRINCIPALES } from '../data/content'
@@ -75,6 +75,29 @@ const SERVICES = [
   },
 ] as const
 
+const GARANTIES = [
+  {
+    icon: <Award className="h-6 w-6 text-wasp-yellow" />,
+    title: 'Certibiocide certifié',
+    detail: `N°${CONTACT.certibiocide} — habilitation officielle`,
+  },
+  {
+    icon: <Clock className="h-6 w-6 text-wasp-yellow" />,
+    title: 'Intervention sous 24h',
+    detail: 'Réactivité maximale en saison',
+  },
+  {
+    icon: <Bug className="h-6 w-6 text-wasp-yellow" />,
+    title: '+400 nids traités',
+    detail: 'Expérience terrain éprouvée',
+  },
+  {
+    icon: <ThumbsUp className="h-6 w-6 text-wasp-yellow" />,
+    title: 'Produits homologués',
+    detail: "Biocides raisonnés, respectueux de l'environnement",
+  },
+] as const
+
 export default function HomePage() {
   const statsRef = useRef<HTMLDivElement>(null)
   useInView(statsRef, { once: true })
@@ -144,6 +167,39 @@ export default function HomePage() {
                 to={to}
                 delay={i * 0.1}
               />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <WaspStripeDivider />
+
+      <section className="py-16">
+        <div className="mx-auto max-w-7xl px-4">
+          <motion.h2
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mb-10 text-center font-rajdhani text-3xl font-black text-wasp-black md:text-4xl"
+          >
+            Pourquoi nous choisir ?
+          </motion.h2>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {GARANTIES.map(({ icon, title, detail }, i) => (
+              <motion.div
+                key={title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1, duration: 0.4 }}
+                className="flex flex-col items-center rounded-xl bg-wasp-light p-6 text-center"
+              >
+                <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-lg bg-wasp-yellow/10">
+                  {icon}
+                </div>
+                <h3 className="mb-1 font-rajdhani text-lg font-bold text-wasp-black">{title}</h3>
+                <p className="font-poppins text-xs text-wasp-gray">{detail}</p>
+              </motion.div>
             ))}
           </div>
         </div>
