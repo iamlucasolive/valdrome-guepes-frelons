@@ -3,7 +3,31 @@ import { motion } from 'framer-motion'
 import { Phone as PhoneIcon } from 'lucide-react'
 import HeroSection from '../components/HeroSection'
 import WaspStripeDivider from '../components/WaspStripeDivider'
+import FaqSection, { FaqItem } from '../components/FaqSection'
 import { CONTACT } from '../data/content'
+
+const FAQ_FRELONS: FaqItem[] = [
+  {
+    question: "Comment reconnaître un frelon asiatique ?",
+    answer: "Le frelon asiatique (Vespa velutina) est plus petit que l'européen. Il a un abdomen majoritairement noir avec une bande orange sur le 4ème segment, et des pattes jaunes à l'extrémité.",
+  },
+  {
+    question: "Le frelon asiatique est-il plus dangereux que l'européen ?",
+    answer: "Pas davantage pour l'humain en termes de venin, mais il est une menace majeure pour les abeilles et la biodiversité. En revanche, il peut attaquer en masse si le nid est menacé.",
+  },
+  {
+    question: "Qui contacter pour un nid de frelons asiatiques ?",
+    answer: "Contactez un professionnel certifié Certibiocide comme Val Drôme Guêpes Frelons. Ne tentez jamais d'intervenir vous-même sur un nid de frelons.",
+  },
+  {
+    question: "La destruction d'un nid de frelons asiatiques est-elle obligatoire ?",
+    answer: "Elle n'est pas légalement obligatoire pour les particuliers, mais fortement recommandée pour protéger les populations d'abeilles et éviter tout accident.",
+  },
+  {
+    question: "Quel est le délai d'intervention ?",
+    answer: "Nous intervenons sous 24h maximum en saison (avril à octobre). Appelez-nous directement pour une prise en charge rapide.",
+  },
+]
 
 export default function FrelonsPage() {
   return (
@@ -95,6 +119,9 @@ export default function FrelonsPage() {
           </a>
         </div>
       </section>
+
+      <WaspStripeDivider />
+      <FaqSection items={FAQ_FRELONS} jsonLdId="faq-frelons" />
     </>
   )
 }
