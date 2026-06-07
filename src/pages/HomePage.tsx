@@ -198,8 +198,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      <WaspStripeDivider />
-
       <section className="py-16">
         <div className="mx-auto max-w-7xl px-4">
           <motion.h2
@@ -230,8 +228,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
-      <WaspStripeDivider />
 
       <section className="py-16">
         <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 md:grid-cols-2">
