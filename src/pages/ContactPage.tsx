@@ -42,6 +42,7 @@ export default function ContactPage() {
             <div className="space-y-4">
               <a
                 href={CONTACT.telephoneHref}
+                aria-label="Appeler Val Drôme Guêpes Frelons"
                 className="flex w-full items-center justify-center gap-3 rounded-xl bg-wasp-yellow py-4 font-rajdhani text-xl font-bold text-wasp-black transition-opacity hover:opacity-90"
               >
                 <PhoneIcon className="h-6 w-6" />
@@ -49,6 +50,7 @@ export default function ContactPage() {
               </a>
               <a
                 href={`mailto:${CONTACT.email}`}
+                aria-label={`Envoyer un email à ${CONTACT.email}`}
                 className="flex w-full items-center justify-center gap-3 rounded-xl border-2 border-wasp-black py-4 font-rajdhani text-lg font-bold text-wasp-black transition-colors hover:bg-wasp-black hover:text-wasp-yellow"
               >
                 <Mail className="h-5 w-5" />
