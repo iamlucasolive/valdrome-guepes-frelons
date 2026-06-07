@@ -1,10 +1,12 @@
 import { Helmet } from 'react-helmet-async'
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 import { Phone as PhoneIcon, CheckCircle } from 'lucide-react'
 import HeroSection from '../components/HeroSection'
 import WaspStripeDivider from '../components/WaspStripeDivider'
 import { CONTACT } from '../data/content'
 import { COMMUNES } from '../data/communes'
+import { toSlug } from '../utils/communeSlug'
 
 export default function InterventionsPage() {
   return (
@@ -81,12 +83,13 @@ export default function InterventionsPage() {
             className="flex flex-wrap justify-center gap-2"
           >
             {COMMUNES.map((commune) => (
-              <span
+              <Link
                 key={commune}
-                className="rounded-full bg-wasp-dark px-3 py-1 font-poppins text-sm text-white/80"
+                to={`/interventions/${toSlug(commune)}`}
+                className="rounded-full bg-wasp-dark px-3 py-1 font-poppins text-sm text-white/80 transition-colors hover:bg-wasp-yellow hover:text-wasp-black"
               >
                 {commune}
-              </span>
+              </Link>
             ))}
           </motion.div>
           <div className="mt-10 text-center">
