@@ -17,6 +17,11 @@ export const STATS = [
   { valeur: '60+', label: 'communes' },
 ] as const
 
+export const COMMUNES_PRINCIPALES: string[] = [
+  'Crest', 'Nyons', 'Valréas', 'Loriol', 'Livron',
+  'Montélimar', 'Dieulefit', 'Saillans', 'Die', 'Marsanne',
+]
+
 export const LIENS_UTILES = [
   { label: 'Frelons asiatiques', to: '/frelons' },
   { label: 'Nids de Guêpes', to: '/guepes' },
