@@ -17,6 +17,11 @@ export const STATS = [
   { valeur: '60+', label: 'communes' },
 ] as const
 
+export const URGENCE = {
+  active: true,
+  message: "Saison des frelons asiatiques en cours — Intervention sous 24h",
+} as const
+
 export const COMMUNES_PRINCIPALES: string[] = [
   'Crest', 'Nyons', 'Valréas', 'Loriol', 'Livron',
   'Montélimar', 'Dieulefit', 'Saillans', 'Die', 'Marsanne',
