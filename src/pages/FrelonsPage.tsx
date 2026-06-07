@@ -3,7 +3,8 @@ import { motion } from 'framer-motion'
 import { Phone as PhoneIcon } from 'lucide-react'
 import HeroSection from '../components/HeroSection'
 import WaspStripeDivider from '../components/WaspStripeDivider'
-import FaqSection, { FaqItem } from '../components/FaqSection'
+import FaqSection from '../components/FaqSection'
+import type { FaqItem } from '../components/FaqSection'
 import { CONTACT } from '../data/content'
 
 const FAQ_FRELONS: FaqItem[] = [
