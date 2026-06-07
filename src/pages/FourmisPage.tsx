@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { Utensils, Zap, Leaf, Phone as PhoneIcon } from 'lucide-react'
 import HeroSection from '../components/HeroSection'
 import WaspStripeDivider from '../components/WaspStripeDivider'
+import FaqSection, { FaqItem } from '../components/FaqSection'
 import { CONTACT } from '../data/content'
 
 interface DangerCardProps { icon: React.ReactNode; title: string; text: string; delay: number }
@@ -24,6 +25,29 @@ function DangerCard({ icon, title, text, delay }: DangerCardProps) {
     </motion.div>
   )
 }
+
+const FAQ_FOURMIS: FaqItem[] = [
+  {
+    question: "Quels produits utilisez-vous contre les fourmis ?",
+    answer: "Nous utilisons exclusivement des biocides homologués, adaptés à chaque espèce et appliqués de manière raisonnée pour limiter l'impact environnemental.",
+  },
+  {
+    question: "Combien de temps dure le traitement anti-fourmis ?",
+    answer: "L'intervention dure généralement entre 30 et 60 minutes. Les effets du traitement se font sentir dans les 24 à 72 heures.",
+  },
+  {
+    question: "Les fourmis peuvent-elles revenir après traitement ?",
+    answer: "Un traitement professionnel cible la reine et la colonie. Sans reine, la fourmilière disparaît. Le risque de retour est faible mais dépend de l'environnement.",
+  },
+  {
+    question: "Intervenez-vous en intérieur ?",
+    answer: "Oui, nous intervenons aussi bien en extérieur qu'en intérieur. Les produits utilisés sont adaptés aux espaces habitables.",
+  },
+  {
+    question: "Le traitement est-il sans danger pour les animaux domestiques ?",
+    answer: "Oui, à condition de respecter les consignes post-traitement (ventilation de la pièce, ne pas laisser les animaux sur les zones traitées pendant quelques heures).",
+  },
+]
 
 export default function FourmisPage() {
   return (
@@ -96,6 +120,9 @@ export default function FourmisPage() {
           </a>
         </div>
       </section>
+
+      <WaspStripeDivider />
+      <FaqSection items={FAQ_FOURMIS} jsonLdId="faq-fourmis" />
     </>
   )
 }
