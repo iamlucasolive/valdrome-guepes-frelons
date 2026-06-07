@@ -9,6 +9,7 @@ interface HeroSectionProps {
   titleHighlight?: string
   subtitle: string
   showCta?: boolean
+  imageSrc?: string
 }
 
 const fadeUp = {
@@ -25,9 +26,10 @@ export default function HeroSection({
   titleHighlight,
   subtitle,
   showCta = true,
+  imageSrc,
 }: HeroSectionProps) {
   return (
-    <section className="relative overflow-hidden bg-wasp-black py-20 md:py-28">
+    <section className="overflow-hidden bg-wasp-black py-20 md:py-28">
       <div className="relative mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 px-4 md:grid-cols-2">
         {/* Contenu textuel */}
         <div>
@@ -100,18 +102,21 @@ export default function HeroSection({
         </div>
 
         {/* Image terrain desktop */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.3, duration: 0.6 }}
-          className="hidden overflow-hidden rounded-2xl md:block"
-        >
-          <img
-            src="/images/destruction-guepes-frelons-drome.jpg"
-            alt="Professionnel certifié pour la destruction de nids de guêpes et frelons dans la Drôme"
-            className="h-80 w-full object-cover lg:h-96"
-          />
-        </motion.div>
+        {imageSrc && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+            className="hidden overflow-hidden rounded-2xl md:block"
+          >
+            <img
+              src={imageSrc}
+              alt="Professionnel certifié pour la destruction de nids de guêpes et frelons dans la Drôme"
+              fetchPriority="high"
+              className="h-80 w-full object-cover lg:h-96"
+            />
+          </motion.div>
+        )}
       </div>
 
       <div className="mt-12">
