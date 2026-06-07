@@ -6,6 +6,7 @@ import FrelonsPage from './pages/FrelonsPage'
 import FourmisPage from './pages/FourmisPage'
 import InterventionsPage from './pages/InterventionsPage'
 import ContactPage from './pages/ContactPage'
+import CommunePage from './pages/CommunePage'
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,7 @@ const router = createBrowserRouter([
       { path: 'frelons', element: <FrelonsPage /> },
       { path: 'fourmis', element: <FourmisPage /> },
       { path: 'interventions', element: <InterventionsPage /> },
+      { path: 'interventions/:slug', element: <CommunePage /> },
       { path: 'contact', element: <ContactPage /> },
     ],
   },
