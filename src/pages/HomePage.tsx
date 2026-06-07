@@ -13,13 +13,15 @@ function useCountUp(target: number, duration: number, start: boolean) {
   useEffect(() => {
     if (!start) return
     let startTime: number | null = null
+    let rafId: number
     const step = (timestamp: number) => {
       if (!startTime) startTime = timestamp
       const progress = Math.min((timestamp - startTime) / duration, 1)
       setCount(Math.floor(progress * target))
-      if (progress < 1) requestAnimationFrame(step)
+      if (progress < 1) rafId = requestAnimationFrame(step)
     }
-    requestAnimationFrame(step)
+    rafId = requestAnimationFrame(step)
+    return () => cancelAnimationFrame(rafId)
   }, [start, target, duration])
   return count
 }
@@ -37,7 +39,7 @@ function StatItem({ valeur, label, inView }: StatItemProps) {
   return (
     <div className="text-center">
       <p className="font-rajdhani text-3xl font-black text-wasp-black md:text-4xl">
-        {prefix}{inView ? count : 0}{suffix}
+        {prefix}{count}{suffix}
       </p>
       <p className="font-poppins text-sm font-medium text-wasp-black/70">{label}</p>
     </div>
