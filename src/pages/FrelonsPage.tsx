@@ -1,1 +1,100 @@
-export default function FrelonsPage() { return <div>FrelonsPage</div> }
+import { Helmet } from 'react-helmet-async'
+import { motion } from 'framer-motion'
+import { Phone as PhoneIcon } from 'lucide-react'
+import HeroSection from '../components/HeroSection'
+import WaspStripeDivider from '../components/WaspStripeDivider'
+import { CONTACT } from '../data/content'
+
+export default function FrelonsPage() {
+  return (
+    <>
+      <Helmet>
+        <title>Destruction de nids de Frelons dans la Drôme — Val Drôme Guêpes Frelons</title>
+        <meta
+          name="description"
+          content="Éradication des nids de frelons européens et frelons asiatiques dans la Drôme. Expert certifié Certibiocide. Intervention rapide — 06 25 11 54 44."
+        />
+      </Helmet>
+
+      <HeroSection
+        title="Destruction de nids de"
+        titleHighlight="Frelons"
+        subtitle="Éradication des nids de frelons européens et frelons asiatiques dans la Drôme."
+        showCta
+      />
+
+      <section className="py-16">
+        <div className="mx-auto max-w-7xl px-4">
+          <motion.h2
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mb-10 text-center font-rajdhani text-3xl font-black text-wasp-black"
+          >
+            Frelon européen vs Frelon asiatique
+          </motion.h2>
+          <div className="grid gap-6 md:grid-cols-2">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="rounded-xl border border-gray-200 p-6"
+            >
+              <div className="mb-3 inline-block rounded-full bg-amber-100 px-3 py-1 font-poppins text-xs font-bold text-amber-800">
+                Frelon européen
+              </div>
+              <h3 className="mb-3 font-rajdhani text-2xl font-bold text-wasp-black">
+                Vespa crabro
+              </h3>
+              <p className="font-poppins text-sm leading-relaxed text-wasp-gray">
+                Le frelon européen est le plus grand frelon d&apos;Europe. Moins agressif que son
+                homologue asiatique, il reste dangereux. Ses nids sont généralement construits
+                dans des cavités (arbres creux, greniers, murs).
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="rounded-xl border-2 border-wasp-yellow p-6"
+            >
+              <div className="mb-3 inline-block rounded-full bg-wasp-yellow px-3 py-1 font-poppins text-xs font-bold text-wasp-black">
+                Frelon asiatique — Plus dangereux
+              </div>
+              <h3 className="mb-3 font-rajdhani text-2xl font-bold text-wasp-black">
+                Vespa velutina
+              </h3>
+              <p className="font-poppins text-sm leading-relaxed text-wasp-gray">
+                Le frelon asiatique est une espèce invasive particulièrement agressive. Ses nids
+                sont impressionnants et peuvent contenir plusieurs milliers d&apos;individus. Espèce
+                classée nuisible — intervention d&apos;un professionnel habilité obligatoire.
+              </p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      <WaspStripeDivider />
+
+      <section className="bg-wasp-black py-16">
+        <div className="mx-auto max-w-xl px-4 text-center">
+          <h2 className="mb-4 font-rajdhani text-3xl font-black text-white">
+            Ne prenez aucun risque
+          </h2>
+          <p className="mb-8 font-poppins text-base text-white/60">
+            Un nid de frelons près de votre habitation ? N&apos;intervenez pas vous-même.
+            Contactez {CONTACT.responsable} pour une intervention rapide.
+          </p>
+          <a
+            href={CONTACT.telephoneHref}
+            className="inline-flex items-center gap-2 rounded-md bg-wasp-yellow px-8 py-4 font-rajdhani text-lg font-bold text-wasp-black transition-opacity hover:opacity-90"
+          >
+            <PhoneIcon className="h-5 w-5" />
+            {CONTACT.telephone}
+          </a>
+        </div>
+      </section>
+    </>
+  )
+}
