@@ -2,7 +2,6 @@ import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { Phone } from 'lucide-react'
 import { CONTACT } from '../data/content'
-import WaspStripeDivider from './WaspStripeDivider'
 
 interface HeroSectionProps {
   title: string
@@ -119,9 +118,6 @@ export default function HeroSection({
         )}
       </div>
 
-      <div className="mt-12">
-        <WaspStripeDivider />
-      </div>
     </section>
   )
 }
