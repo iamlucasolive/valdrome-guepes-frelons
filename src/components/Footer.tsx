@@ -69,6 +69,12 @@ export default function Footer() {
           &mdash; &copy; {new Date().getFullYear()} {CONTACT.nom}
         </p>
       </div>
+
+      <div className="bg-wasp-black px-4 py-2 text-center">
+        <Link to="/mentions-legales" className="font-poppins text-xs text-white/50 hover:text-wasp-yellow transition-colors">
+          Mentions légales
+        </Link>
+      </div>
     </footer>
   )
 }
