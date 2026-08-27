@@ -160,7 +160,7 @@ export default function HomePage() {
         titleHighlight="Guêpes & Frelons"
         subtitle="Spécialisé en destruction des nids dans la vallée de la Drôme. Biocides homologués, intervention rapide."
         showCta
-        imageSrc="/images/destruction-guepes-frelons-drome.jpg"
+        imageSrc="/images/destruction-guepes-frelons-drome.png"
       />
 
       <div ref={statsRef} className="bg-wasp-yellow py-8">
@@ -267,7 +267,7 @@ export default function HomePage() {
             className="overflow-hidden rounded-xl"
           >
             <img
-              src="/images/destruction-guepes-frelons-drome.jpg"
+              src="/images/destruction-guepes-frelons-drome.png"
               alt="Destruction professionnelle de nids de guêpes et frelons dans la Drôme"
               className="h-72 w-full object-cover md:h-96"
             />
