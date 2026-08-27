@@ -108,12 +108,17 @@ export default function HeroSection({
             transition={{ delay: 0.3, duration: 0.6 }}
             className="hidden overflow-hidden rounded-2xl md:block"
           >
-            <img
-              src={imageSrc}
-              alt="Professionnel certifié pour la destruction de nids de guêpes et frelons dans la Drôme"
-              fetchPriority="high"
-              className="h-80 w-full object-contain lg:h-96"
-            />
+            <picture>
+              <source srcSet={imageSrc.replace(/\.(png|jpe?g)$/i, '.webp')} type="image/webp" />
+              <img
+                src={imageSrc}
+                alt="Professionnel certifié pour la destruction de nids de guêpes et frelons dans la Drôme"
+                width={640}
+                height={384}
+                fetchPriority="high"
+                className="h-80 w-full object-contain lg:h-96"
+              />
+            </picture>
           </motion.div>
         )}
       </div>

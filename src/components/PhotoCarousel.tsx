@@ -64,8 +64,15 @@ export default function PhotoCarousel({
       <AnimatePresence initial={false} custom={direction}>
         <motion.img
           key={index}
-          src={photos[index].src}
+          src={photos[index].src.replace(/\.(png|jpe?g)$/i, '.webp')}
+          onError={(e) => {
+            const img = e.currentTarget
+            if (!img.src.endsWith(photos[index].src)) img.src = photos[index].src
+          }}
           alt={photos[index].alt}
+          loading="lazy"
+          width={640}
+          height={384}
           custom={direction}
           variants={variants}
           initial="enter"
