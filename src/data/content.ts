@@ -6,7 +6,7 @@ export const CONTACT = {
   ville: 'SAOU',
   telephone: '06 25 11 54 44',
   telephoneHref: 'tel:+33625115444',
-  email: 'contact@valdrome-guepes-frelons.fr',
+  email: 'contact@frelons-guepes-destruction.fr',
   siret: '752 535 377 00028',
   certibiocide: '0315595',
 } as const
