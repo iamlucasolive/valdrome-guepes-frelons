@@ -34,9 +34,12 @@ export default function Navbar() {
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2">
           <img
-            src="/images/destruction-guepes-frelons-drome.png"
+            src="/images/logo-48.png"
+            srcSet="/images/logo-48.png 1x, /images/logo-96.png 2x, /images/logo-144.png 3x"
             alt="Val Drôme Guêpes Frelons"
-            className="h-10 w-10 rounded-md object-cover"
+            width={40}
+            height={40}
+            className="h-10 w-10 object-contain"
           />
           <div>
             <p className="font-rajdhani text-sm font-bold leading-none text-wasp-yellow">

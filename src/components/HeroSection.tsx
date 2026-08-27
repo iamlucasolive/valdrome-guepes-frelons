@@ -112,7 +112,7 @@ export default function HeroSection({
               src={imageSrc}
               alt="Professionnel certifié pour la destruction de nids de guêpes et frelons dans la Drôme"
               fetchPriority="high"
-              className="h-80 w-full object-cover lg:h-96"
+              className="h-80 w-full object-contain lg:h-96"
             />
           </motion.div>
         )}

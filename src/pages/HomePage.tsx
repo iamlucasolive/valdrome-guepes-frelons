@@ -5,6 +5,7 @@ import { useRef, useEffect, useState } from 'react'
 import { Bug, Zap, Shield, ChevronRight, Award, Clock, ThumbsUp } from 'lucide-react'
 import HeroSection from '../components/HeroSection'
 import WaspStripeDivider from '../components/WaspStripeDivider'
+import PhotoCarousel from '../components/PhotoCarousel'
 import { STATS, CONTACT, COMMUNES_PRINCIPALES } from '../data/content'
 import { COMMUNES } from '../data/communes'
 
@@ -264,12 +265,26 @@ export default function HomePage() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="overflow-hidden rounded-xl"
           >
-            <img
-              src="/images/destruction-guepes-frelons-drome.png"
-              alt="Destruction professionnelle de nids de guêpes et frelons dans la Drôme"
-              className="h-72 w-full object-cover md:h-96"
+            <PhotoCarousel
+              photos={[
+                {
+                  src: '/photos/intervention-nid-guepes-hauteur-drome.jpg',
+                  alt: 'Technicien Val Drôme Guêpes Frelons intervenant en hauteur sur un nid de guêpes',
+                },
+                {
+                  src: '/photos/nid-frelons-actif-drome.jpg',
+                  alt: 'Nid de frelons actif traité dans la Drôme',
+                },
+                {
+                  src: '/photos/intervention-securisee-nid-frelons-drome.jpg',
+                  alt: 'Intervention sécurisée sur un nid de frelons avec balisage de zone',
+                },
+                {
+                  src: '/photos/nid-frelons-arbre-drome.jpg',
+                  alt: 'Nid de frelons repéré dans un arbre avant intervention',
+                },
+              ]}
             />
           </motion.div>
         </div>
