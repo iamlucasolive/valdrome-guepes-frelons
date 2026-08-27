@@ -84,11 +84,11 @@ export default function InterventionsPage() {
           >
             {COMMUNES.map((commune) => (
               <Link
-                key={commune}
-                to={`/interventions/${toSlug(commune)}`}
+                key={commune.nom}
+                to={`/interventions/${toSlug(commune.nom)}`}
                 className="rounded-full bg-wasp-dark px-3 py-1 font-poppins text-sm text-white/80 transition-colors hover:bg-wasp-yellow hover:text-wasp-black"
               >
-                {commune}
+                {commune.nom}
               </Link>
             ))}
           </motion.div>

@@ -8,7 +8,7 @@ import { toSlug } from '../utils/communeSlug'
 export default function CommunePage() {
   const { slug } = useParams<{ slug: string }>()
 
-  const commune = COMMUNES.find((c) => toSlug(c) === slug)
+  const commune = COMMUNES.find((c) => toSlug(c.nom) === slug)
 
   if (!commune) {
     return (
@@ -34,16 +34,16 @@ export default function CommunePage() {
       addressLocality: CONTACT.ville,
       addressCountry: 'FR',
     },
-    areaServed: commune,
+    areaServed: commune.nom,
   }
 
   return (
     <>
       <Helmet>
-        <title>Destruction guêpes et frelons à {commune} — Val Drôme Guêpes Frelons</title>
+        <title>Destruction guêpes et frelons à {commune.nom} — Val Drôme Guêpes Frelons</title>
         <meta
           name="description"
-          content={`Intervention rapide pour destruction de nids de guêpes, frelons et fourmis à ${commune} et alentours. Certibiocide N°${CONTACT.certibiocide}. Appelez le ${CONTACT.telephone}.`}
+          content={`Intervention rapide pour destruction de nids de guêpes, frelons et fourmis à ${commune.nom} et alentours. Certibiocide N°${CONTACT.certibiocide}. Appelez le ${CONTACT.telephone}.`}
         />
         <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
       </Helmet>
@@ -51,14 +51,14 @@ export default function CommunePage() {
       <section className="bg-wasp-black py-20">
         <div className="mx-auto max-w-7xl px-4">
           <p className="mb-3 font-poppins text-xs font-bold uppercase tracking-[3px] text-wasp-yellow">
-            Intervention rapide · {commune}
+            Intervention rapide · {commune.nom}
           </p>
           <h1 className="mb-4 font-rajdhani text-4xl font-black leading-tight text-white md:text-5xl">
             Destruction de guêpes et frelons à{' '}
-            <span className="text-wasp-yellow">{commune}</span>
+            <span className="text-wasp-yellow">{commune.nom}</span>
           </h1>
           <p className="mb-8 max-w-xl font-poppins text-base text-white/60">
-            Val Drôme Guêpes Frelons intervient à {commune} et dans les communes environnantes pour
+            Val Drôme Guêpes Frelons intervient à {commune.nom} et dans les communes environnantes pour
             la destruction professionnelle de nids de guêpes, frelons et fourmis. Biocides
             homologués, Certibiocide N°{CONTACT.certibiocide}.
           </p>
@@ -83,7 +83,7 @@ export default function CommunePage() {
       <section className="py-12">
         <div className="mx-auto max-w-7xl px-4">
           <h2 className="mb-4 font-rajdhani text-2xl font-black text-wasp-black">
-            Nos services à {commune}
+            Nos services à {commune.nom}
           </h2>
           <div className="flex flex-wrap gap-3">
             {['Destruction de guêpes', 'Destruction de frelons', 'Destruction de frelons asiatiques', 'Destruction de fourmis'].map((service) => (

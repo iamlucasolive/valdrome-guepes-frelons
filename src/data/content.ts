@@ -22,10 +22,7 @@ export const URGENCE = {
   message: "Saison des frelons asiatiques en cours — Intervention sous 24h",
 } as const
 
-export const COMMUNES_PRINCIPALES: string[] = [
-  'Crest', 'Nyons', 'Valréas', 'Loriol', 'Livron',
-  'Montélimar', 'Dieulefit', 'Saillans', 'Die', 'Marsanne',
-]
+export { COMMUNES_PRINCIPALES } from './communes'
 
 export const LIENS_UTILES = [
   { label: 'Frelons asiatiques', to: '/frelons' },

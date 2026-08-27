@@ -142,7 +142,7 @@ export default function HomePage() {
       addressLocality: CONTACT.ville,
       addressCountry: 'FR',
     },
-    areaServed: COMMUNES.join(', '),
+    areaServed: COMMUNES.map((c) => c.nom).join(', '),
   }
 
   return (
