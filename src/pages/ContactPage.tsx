@@ -1,21 +1,21 @@
-import { Helmet } from 'react-helmet-async'
 import { motion } from 'framer-motion'
 import { Phone as PhoneIcon, Mail, MapPin } from 'lucide-react'
 import HeroSection from '../components/HeroSection'
 import WaspStripeDivider from '../components/WaspStripeDivider'
+import Seo from '../components/Seo'
+import { localBusiness } from '../lib/jsonLd'
 import { CONTACT } from '../data/content'
 
 export default function ContactPage() {
 
   return (
     <>
-      <Helmet>
-        <title>Contact — Val Drôme Guêpes Frelons</title>
-        <meta
-          name="description"
-          content="Contactez Val Drôme Guêpes Frelons pour la destruction de nids de guêpes, frelons ou fourmis dans la Drôme. Téléphone : 06 25 11 54 44."
-        />
-      </Helmet>
+      <Seo
+        title="Contact — Val Drôme Guêpes Frelons"
+        description="Contactez Val Drôme Guêpes Frelons pour la destruction de nids de guêpes, frelons ou fourmis dans la Drôme. Téléphone : 06 25 11 54 44."
+        path="/contact"
+        jsonLd={[localBusiness()]}
+      />
 
       <HeroSection
         title="Nous"

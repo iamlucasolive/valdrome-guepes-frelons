@@ -1,10 +1,12 @@
-import { Helmet } from 'react-helmet-async'
 import { motion } from 'framer-motion'
 import { Phone as PhoneIcon } from 'lucide-react'
 import HeroSection from '../components/HeroSection'
 import WaspStripeDivider from '../components/WaspStripeDivider'
 import FaqSection from '../components/FaqSection'
 import type { FaqItem } from '../components/FaqSection'
+import Seo from '../components/Seo'
+import Breadcrumb from '../components/Breadcrumb'
+import { service, breadcrumb } from '../lib/jsonLd'
 import { CONTACT } from '../data/content'
 
 const FAQ_FRELONS: FaqItem[] = [
@@ -33,13 +35,18 @@ const FAQ_FRELONS: FaqItem[] = [
 export default function FrelonsPage() {
   return (
     <>
-      <Helmet>
-        <title>Destruction de nids de Frelons dans la Drôme — Val Drôme Guêpes Frelons</title>
-        <meta
-          name="description"
-          content="Éradication des nids de frelons européens et frelons asiatiques dans la Drôme. Expert certifié Certibiocide. Intervention rapide — 06 25 11 54 44."
-        />
-      </Helmet>
+      <Seo
+        title="Destruction de nids de Frelons dans la Drôme — Val Drôme Guêpes Frelons"
+        description="Éradication des nids de frelons européens et frelons asiatiques dans la Drôme. Expert certifié Certibiocide. Intervention rapide — 06 25 11 54 44."
+        path="/frelons"
+        image="/og/frelons.png"
+        jsonLd={[
+          service('Destruction de nids de frelons', 'Éradication des nids de frelons européens et asiatiques dans la Drôme.', '/frelons'),
+          breadcrumb([{ name: 'Accueil', path: '/' }, { name: 'Frelons', path: '/frelons' }]),
+        ]}
+      />
+
+      <Breadcrumb items={[{ name: 'Accueil', path: '/' }, { name: 'Frelons', path: '/frelons' }]} />
 
       <HeroSection
         title="Destruction de nids de"

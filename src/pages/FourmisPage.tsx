@@ -1,10 +1,12 @@
-import { Helmet } from 'react-helmet-async'
 import { motion } from 'framer-motion'
 import { Utensils, Zap, Leaf, Phone as PhoneIcon } from 'lucide-react'
 import HeroSection from '../components/HeroSection'
 import WaspStripeDivider from '../components/WaspStripeDivider'
 import FaqSection from '../components/FaqSection'
 import type { FaqItem } from '../components/FaqSection'
+import Seo from '../components/Seo'
+import Breadcrumb from '../components/Breadcrumb'
+import { service, breadcrumb } from '../lib/jsonLd'
 import { CONTACT } from '../data/content'
 
 interface DangerCardProps { icon: React.ReactNode; title: string; text: string; delay: number }
@@ -53,13 +55,18 @@ const FAQ_FOURMIS: FaqItem[] = [
 export default function FourmisPage() {
   return (
     <>
-      <Helmet>
-        <title>Destruction de fourmilières dans la Drôme — Val Drôme Guêpes Frelons</title>
-        <meta
-          name="description"
-          content="Éradication professionnelle des fourmilières dans la Drôme. Biocides homologués, traitement raisonné. Appelez le 06 25 11 54 44."
-        />
-      </Helmet>
+      <Seo
+        title="Destruction de fourmilières dans la Drôme — Val Drôme Guêpes Frelons"
+        description="Éradication professionnelle des fourmilières dans la Drôme. Biocides homologués, traitement raisonné. Appelez le 06 25 11 54 44."
+        path="/fourmis"
+        image="/og/fourmis.png"
+        jsonLd={[
+          service('Destruction de fourmilières', 'Éradication professionnelle des colonies de fourmis dans la Drôme.', '/fourmis'),
+          breadcrumb([{ name: 'Accueil', path: '/' }, { name: 'Fourmis', path: '/fourmis' }]),
+        ]}
+      />
+
+      <Breadcrumb items={[{ name: 'Accueil', path: '/' }, { name: 'Fourmis', path: '/fourmis' }]} />
 
       <HeroSection
         title="Destruction de"

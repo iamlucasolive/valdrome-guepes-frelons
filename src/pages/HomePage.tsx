@@ -1,4 +1,3 @@
-import { Helmet } from 'react-helmet-async'
 import { Link } from 'react-router-dom'
 import { motion, useInView } from 'framer-motion'
 import { useRef, useEffect, useState } from 'react'
@@ -6,6 +5,8 @@ import { Bug, Zap, Shield, ChevronRight, Award, Clock, ThumbsUp } from 'lucide-r
 import HeroSection from '../components/HeroSection'
 import WaspStripeDivider from '../components/WaspStripeDivider'
 import PhotoCarousel from '../components/PhotoCarousel'
+import Seo from '../components/Seo'
+import { localBusiness } from '../lib/jsonLd'
 import { STATS, CONTACT, COMMUNES_PRINCIPALES } from '../data/content'
 import { COMMUNES } from '../data/communes'
 
@@ -128,33 +129,14 @@ export default function HomePage() {
   const statsRef = useRef<HTMLDivElement>(null)
   const statsInView = useInView(statsRef, { once: true })
 
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'LocalBusiness',
-    name: CONTACT.nom,
-    description: 'Destruction professionnelle de nids de guêpes, frelons et fourmis dans la Drôme.',
-    telephone: CONTACT.telephone,
-    email: CONTACT.email,
-    address: {
-      '@type': 'PostalAddress',
-      streetAddress: CONTACT.adresse,
-      postalCode: CONTACT.codePostal,
-      addressLocality: CONTACT.ville,
-      addressCountry: 'FR',
-    },
-    areaServed: COMMUNES.map((c) => c.nom).join(', '),
-  }
-
   return (
     <>
-      <Helmet>
-        <title>Destruction de Guêpes & Frelons dans la Drôme — Val Drôme Guêpes Frelons</title>
-        <meta
-          name="description"
-          content="Val Drôme Guêpes Frelons : professionnel certifié de la destruction de nids de guêpes, frelons et frelons asiatiques dans la Drôme. Certibiocide N°0315595. Intervention rapide sur 60+ communes."
-        />
-        <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
-      </Helmet>
+      <Seo
+        title="Destruction de Guêpes & Frelons dans la Drôme — Val Drôme Guêpes Frelons"
+        description="Val Drôme Guêpes Frelons : professionnel certifié de la destruction de nids de guêpes, frelons et frelons asiatiques dans la Drôme. Certibiocide N°0315595. Intervention rapide sur 60+ communes."
+        path="/"
+        jsonLd={[localBusiness()]}
+      />
 
       <HeroSection
         title="Destruction de"

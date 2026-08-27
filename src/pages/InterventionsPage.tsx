@@ -1,9 +1,11 @@
-import { Helmet } from 'react-helmet-async'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { Phone as PhoneIcon, CheckCircle } from 'lucide-react'
 import HeroSection from '../components/HeroSection'
 import WaspStripeDivider from '../components/WaspStripeDivider'
+import Seo from '../components/Seo'
+import Breadcrumb from '../components/Breadcrumb'
+import { breadcrumb } from '../lib/jsonLd'
 import { CONTACT } from '../data/content'
 import { COMMUNES } from '../data/communes'
 import { toSlug } from '../utils/communeSlug'
@@ -11,13 +13,14 @@ import { toSlug } from '../utils/communeSlug'
 export default function InterventionsPage() {
   return (
     <>
-      <Helmet>
-        <title>Zone d&apos;intervention Guêpes Frelons — Sud Drôme — Val Drôme Guêpes Frelons</title>
-        <meta
-          name="description"
-          content={`Intervention rapide sur ${COMMUNES.length}+ communes de la moitié Sud de la Drôme. Destruction de guêpes, frelons et fourmis. Appelez le 06 25 11 54 44.`}
-        />
-      </Helmet>
+      <Seo
+        title="Zone d'intervention Guêpes Frelons — Sud Drôme — Val Drôme Guêpes Frelons"
+        description={`Intervention rapide sur ${COMMUNES.length}+ communes de la moitié Sud de la Drôme. Destruction de guêpes, frelons et fourmis. Appelez le 06 25 11 54 44.`}
+        path="/interventions"
+        jsonLd={[breadcrumb([{ name: 'Accueil', path: '/' }, { name: 'Interventions', path: '/interventions' }])]}
+      />
+
+      <Breadcrumb items={[{ name: 'Accueil', path: '/' }, { name: 'Interventions', path: '/interventions' }]} />
 
       <HeroSection
         title="Zone d'intervention —"

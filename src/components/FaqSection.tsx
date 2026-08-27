@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronDown } from 'lucide-react'
+import { faqPage } from '../lib/jsonLd'
 
 export interface FaqItem {
   question: string
@@ -15,15 +16,7 @@ interface FaqSectionProps {
 export default function FaqSection({ items, jsonLdId = 'faq' }: FaqSectionProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
 
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: items.map(({ question, answer }) => ({
-      '@type': 'Question',
-      name: question,
-      acceptedAnswer: { '@type': 'Answer', text: answer },
-    })),
-  }
+  const jsonLd = faqPage(items)
 
   return (
     <section className="bg-wasp-light py-16">
