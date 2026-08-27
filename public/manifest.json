@@ -1,0 +1,14 @@
+{
+  "name": "Val Drôme Guêpes Frelons",
+  "short_name": "Val Drôme G&F",
+  "description": "Destruction de nids de guêpes, frelons et fourmis dans la Drôme.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1A1A1A",
+  "theme_color": "#FFD600",
+  "icons": [
+    { "src": "/images/logo-48.png", "sizes": "48x48", "type": "image/png" },
+    { "src": "/images/logo-96.png", "sizes": "96x96", "type": "image/png" },
+    { "src": "/images/logo-144.png", "sizes": "144x144", "type": "image/png" }
+  ]
+}
